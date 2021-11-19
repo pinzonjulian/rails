@@ -1,3 +1,7 @@
+*   Remove deprecated `ActiveRecord::Base#remove_connection`.
+
+    *Rafael Mendonça França*
+
 *   Remove deprecated `ActiveRecord::Result#map!` and `ActiveRecord::Result#collect!`.
 
     *Rafael Mendonça França*
