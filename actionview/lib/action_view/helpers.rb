@@ -31,10 +31,12 @@ module ActionView # :nodoc:
     extend ActiveSupport::Autoload
 
     autoload :Tags
+    autoload :AttributeBuilders
 
     def self.eager_load!
       super
       Tags.eager_load!
+      AttributeBuilders.eager_load!
     end
 
     extend ActiveSupport::Concern
