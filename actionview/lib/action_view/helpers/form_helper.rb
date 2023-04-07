@@ -1192,7 +1192,9 @@ module ActionView
       #   password_field(:account, :pin, size: 20, class: 'form_input')
       #   # => <input type="password" id="account_pin" name="account[pin]" size="20" class="form_input" />
       def password_field(object_name, method, options = {})
-        Tags::PasswordField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::PasswordField.new(object_name, method, self, options).build_attributes
+
+        tag("input", attributes)
       end
 
       # Returns a hidden input tag tailored for accessing a specified attribute (identified by +method+) on an object
