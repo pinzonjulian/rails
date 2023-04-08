@@ -24,7 +24,6 @@ module ActionView
         autoload :HiddenField
         autoload :Label
         autoload :MonthField
-        autoload :NumberField
         autoload :RadioButton
         autoload :RangeField
         autoload :SearchField

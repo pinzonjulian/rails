@@ -1576,7 +1576,8 @@ module ActionView
       #
       # Supports the same options as FormTagHelper#number_field_tag.
       def number_field(object_name, method, options = {})
-        Tags::NumberField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::NumberField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns an input tag of type "range".
