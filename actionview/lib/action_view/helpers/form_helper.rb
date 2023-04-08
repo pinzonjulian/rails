@@ -1558,7 +1558,8 @@ module ActionView
       #   # => <input id="user_homepage" name="user[homepage]" type="url" />
       #
       def url_field(object_name, method, options = {})
-        Tags::UrlField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::UrlField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "email".

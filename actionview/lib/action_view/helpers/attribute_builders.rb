@@ -14,6 +14,7 @@ module ActionView
         autoload :SearchField
         autoload :TextField
         autoload :PasswordField
+        autoload :UrlField
       end
     end
   end
