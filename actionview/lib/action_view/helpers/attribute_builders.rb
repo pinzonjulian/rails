@@ -7,6 +7,7 @@ module ActionView
 
       eager_autoload do
         autoload :Base
+        autoload :CheckBox
         autoload :TextField
         autoload :PasswordField
       end

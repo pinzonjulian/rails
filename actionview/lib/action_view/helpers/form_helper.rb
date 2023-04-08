@@ -1343,7 +1343,8 @@ module ActionView
       #   # => <input name="eula[accepted]" type="hidden" value="no" />
       #   #    <input type="checkbox" class="eula_check" id="eula_accepted" name="eula[accepted]" value="yes" />
       def check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0")
-        Tags::CheckBox.new(object_name, method, self, checked_value, unchecked_value, options).render
+        attributes = AttributeBuilders::CheckBox.new(object_name, method, self, checked_value, options).build_attributes
+        Tags::CheckBox.new(attributes: attributes, unchecked_value: unchecked_value).render
       end
 
       # Returns a radio button tag for accessing a specified attribute (identified by +method+) on an object
