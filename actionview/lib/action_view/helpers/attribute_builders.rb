@@ -14,6 +14,7 @@ module ActionView
         autoload :HiddenField
         autoload :NumberField
         autoload :SearchField
+        autoload :TelField
         autoload :TextField
         autoload :PasswordField
         autoload :UrlField

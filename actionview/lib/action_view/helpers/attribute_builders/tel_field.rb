@@ -2,7 +2,7 @@
 
 module ActionView
   module Helpers
-    module Tags # :nodoc:
+    module AttributeBuilders # :nodoc:
       class TelField < TextField # :nodoc:
       end
     end
