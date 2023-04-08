@@ -1247,7 +1247,8 @@ module ActionView
       def file_field(object_name, method, options = {})
         options = { include_hidden: multiple_file_field_include_hidden }.merge!(options)
 
-        Tags::FileField.new(object_name, method, self, convert_direct_upload_option_to_url(options.dup)).render
+        attributes = AttributeBuilders::FileField.new(object_name, method, self, convert_direct_upload_option_to_url(options.dup)).build_attributes
+        Tags::FileField.new(attributes: attributes).render
       end
 
       # Returns a textarea opening and closing tag set tailored for accessing a specified attribute (identified by +method+)

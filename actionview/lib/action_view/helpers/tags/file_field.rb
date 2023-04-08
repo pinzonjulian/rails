@@ -3,22 +3,30 @@
 module ActionView
   module Helpers
     module Tags # :nodoc:
-      class FileField < TextField # :nodoc:
-        def render
-          include_hidden = @options.delete(:include_hidden)
-          options = @options.stringify_keys
-          add_default_name_and_id(options)
+      class FileField # :nodoc:
+        include TagHelper
 
-          if options["multiple"] && include_hidden
-            hidden_field_for_multiple_file(options) + super
+        def initialize(attributes:)
+          @attributes = attributes
+        end
+        
+        def render
+          include_hidden = @attributes.delete("include_hidden")
+
+          if @attributes["multiple"] && include_hidden
+            hidden_field_for_multiple_file(@attributes) + input_field
           else
-            super
+            input_field
           end
         end
 
         private
-          def hidden_field_for_multiple_file(options)
-            tag("input", "name" => options["name"], "type" => "hidden", "value" => "", "autocomplete" => "off")
+          def input_field
+            tag("input", @attributes)
+          end
+
+          def hidden_field_for_multiple_file(attributes)
+            tag("input", "name" => attributes["name"], "type" => "hidden", "value" => "", "autocomplete" => "off")
           end
       end
     end

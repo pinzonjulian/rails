@@ -10,6 +10,7 @@ module ActionView
         autoload :CheckBox
         autoload :ColorField
         autoload :EmailField
+        autoload :FileField
         autoload :NumberField
         autoload :SearchField
         autoload :TextField
