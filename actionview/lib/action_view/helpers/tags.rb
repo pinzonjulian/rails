@@ -19,7 +19,6 @@ module ActionView
         autoload :DatetimeField
         autoload :DatetimeLocalField
         autoload :DatetimeSelect
-        autoload :EmailField
         autoload :FileField
         autoload :GroupedCollectionSelect
         autoload :HiddenField

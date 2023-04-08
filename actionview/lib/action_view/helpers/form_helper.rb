@@ -1566,7 +1566,8 @@ module ActionView
       #   # => <input id="user_address" name="user[address]" type="email" />
       #
       def email_field(object_name, method, options = {})
-        Tags::EmailField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::EmailField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns an input tag of type "number".
