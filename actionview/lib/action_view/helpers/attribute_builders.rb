@@ -11,6 +11,7 @@ module ActionView
         autoload :ColorField
         autoload :EmailField
         autoload :NumberField
+        autoload :SearchField
         autoload :TextField
         autoload :PasswordField
       end

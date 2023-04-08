@@ -26,7 +26,6 @@ module ActionView
         autoload :MonthField
         autoload :RadioButton
         autoload :RangeField
-        autoload :SearchField
         autoload :Select
         autoload :TelField
         autoload :TextArea

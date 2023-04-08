@@ -1398,7 +1398,8 @@ module ActionView
       #   search_field(:user, :name, autosave: true, onsearch: true)
       #   # => <input autosave="com.example.www" id="user_name" incremental="true" name="user[name]" onsearch="true" results="10" type="search" />
       def search_field(object_name, method, options = {})
-        Tags::SearchField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::SearchField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "tel".
