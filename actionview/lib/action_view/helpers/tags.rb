@@ -21,7 +21,6 @@ module ActionView
         autoload :DatetimeSelect
         autoload :FileField
         autoload :GroupedCollectionSelect
-        autoload :HiddenField
         autoload :Label
         autoload :MonthField
         autoload :RadioButton

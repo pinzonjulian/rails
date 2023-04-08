@@ -1212,7 +1212,8 @@ module ActionView
       #   hidden_field(:user, :token)
       #   # => <input type="hidden" id="user_token" name="user[token]" value="#{@user.token}" />
       def hidden_field(object_name, method, options = {})
-        Tags::HiddenField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::HiddenField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a file upload input tag tailored for accessing a specified attribute (identified by +method+) on an object

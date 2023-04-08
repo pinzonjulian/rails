@@ -2,9 +2,9 @@
 
 module ActionView
   module Helpers
-    module Tags # :nodoc:
+    module AttributeBuilders # :nodoc:
       class HiddenField < TextField # :nodoc:
-        def render
+        def build_attributes
           @options[:autocomplete] = "off"
           super
         end
