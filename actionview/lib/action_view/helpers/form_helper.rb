@@ -1374,7 +1374,8 @@ module ActionView
       #   color_field("car", "color")
       #   # => <input id="car_color" name="car[color]" type="color" value="#000000" />
       def color_field(object_name, method, options = {})
-        Tags::ColorField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::ColorField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns an input of type "search" for accessing a specified attribute (identified by +method+) on an object
