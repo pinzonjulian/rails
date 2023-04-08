@@ -2,7 +2,7 @@
 
 module ActionView
   module Helpers
-    module Tags # :nodoc:
+    module AttributeBuilders # :nodoc:
       class WeekField < DatetimeField # :nodoc:
         private
           def format_datetime(value)

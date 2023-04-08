@@ -1443,7 +1443,8 @@ module ActionView
       #   # => <input id="user_born_on" name="user[born_on]" type="date" min="2014-05-20" />
       #
       def date_field(object_name, method, options = {})
-        Tags::DateField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::DateField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "time".
@@ -1481,7 +1482,8 @@ module ActionView
       #   time_field("task", "started_at", value: Time.now, include_seconds: false)
       #   # => <input id="task_started_at" name="task[started_at]" type="time" value="01:00" />
       def time_field(object_name, method, options = {})
-        Tags::TimeField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::TimeField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "datetime-local".
@@ -1516,7 +1518,8 @@ module ActionView
       #   datetime_field("user", "born_on", include_seconds: false)
       #   # => <input id="user_born_on" name="user[born_on]" type="datetime-local" value="2014-05-20T14:35" />
       def datetime_field(object_name, method, options = {})
-        Tags::DatetimeLocalField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::DatetimeLocalField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       alias datetime_local_field datetime_field
@@ -1535,7 +1538,8 @@ module ActionView
       #   # => <input id="user_born_on" name="user[born_on]" type="date" value="1984-01" />
       #
       def month_field(object_name, method, options = {})
-        Tags::MonthField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::MonthField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "week".
@@ -1552,7 +1556,8 @@ module ActionView
       #   # => <input id="user_born_on" name="user[born_on]" type="date" value="1984-W19" />
       #
       def week_field(object_name, method, options = {})
-        Tags::WeekField.new(object_name, method, self, options).render
+        attributes = AttributeBuilders::WeekField.new(object_name, method, self, options).build_attributes
+        tag("input", attributes)
       end
 
       # Returns a text_field of type "url".

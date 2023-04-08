@@ -2,11 +2,11 @@
 
 module ActionView
   module Helpers
-    module Tags # :nodoc:
-      class DateField < DatetimeField # :nodoc:
+    module AttributeBuilders # :nodoc:
+      class MonthField < DatetimeField # :nodoc:
         private
           def format_datetime(value)
-            value&.strftime("%Y-%m-%d")
+            value&.strftime("%Y-%m")
           end
       end
     end

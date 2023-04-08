@@ -9,15 +9,21 @@ module ActionView
         autoload :Base
         autoload :CheckBox
         autoload :ColorField
+        autoload :DateField
+        autoload :DatetimeField
+        autoload :DatetimeLocalField
         autoload :EmailField
         autoload :FileField
         autoload :HiddenField
+        autoload :MonthField
         autoload :NumberField
         autoload :SearchField
         autoload :TelField
         autoload :TextField
+        autoload :TimeField
         autoload :PasswordField
         autoload :UrlField
+        autoload :WeekField
       end
     end
   end

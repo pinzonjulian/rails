@@ -14,24 +14,18 @@ module ActionView
         autoload :CollectionCheckBoxes
         autoload :CollectionRadioButtons
         autoload :CollectionSelect
-        autoload :DateField
         autoload :DateSelect
-        autoload :DatetimeField
-        autoload :DatetimeLocalField
         autoload :DatetimeSelect
         autoload :FileField
         autoload :GroupedCollectionSelect
         autoload :Label
-        autoload :MonthField
         autoload :RadioButton
         autoload :RangeField
         autoload :Select
         autoload :TextArea
         autoload :TextField
-        autoload :TimeField
         autoload :TimeSelect
         autoload :TimeZoneSelect
-        autoload :WeekField
         autoload :WeekdaySelect
       end
     end
