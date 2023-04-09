@@ -4,7 +4,7 @@ module ActionView
   module Helpers
     module AttributeBuilders # :nodoc:
       class NumberField < TextField # :nodoc:
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
 
           if range = options.delete("in") || options.delete("within")

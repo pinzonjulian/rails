@@ -4,7 +4,7 @@ module ActionView
   module Helpers
     module AttributeBuilders # :nodoc:
       class PasswordField < TextField # :nodoc:
-        def build_attributes
+        def html_attributes
           @options = { value: nil }.merge!(@options)
           super
         end

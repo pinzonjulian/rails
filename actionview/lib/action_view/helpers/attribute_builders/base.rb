@@ -29,7 +29,7 @@ module ActionView
         end
 
         # This is what child classes implement.
-        def build_attributes
+        def html_attributes
           raise NotImplementedError, "Subclasses must implement a render method"
         end
 

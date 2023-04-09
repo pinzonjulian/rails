@@ -4,7 +4,7 @@ module ActionView
   module Helpers
     module AttributeBuilders # :nodoc:
       class SearchField < TextField # :nodoc:
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
 
           if options["autosave"]

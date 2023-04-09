@@ -4,7 +4,7 @@ module ActionView
   module Helpers
     module AttributeBuilders # :nodoc:
       class DatetimeField < TextField # :nodoc:
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
           options["value"] = datetime_value(options["value"] || value)
           options["min"] = format_datetime(parse_datetime(options["min"]))

@@ -13,7 +13,7 @@ module ActionView
           super(object_name, method_name, template_object, options)
         end
 
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
           options["type"]     = "checkbox"
           options["value"]    = @checked_value

@@ -8,7 +8,7 @@ module ActionView
       class TextField < Base # :nodoc:
         include Tags::Placeholderable
 
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
           options["size"] = options["maxlength"] unless options.key?("size")
           options["type"] ||= field_type

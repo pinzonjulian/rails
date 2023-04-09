@@ -4,7 +4,7 @@ module ActionView
   module Helpers
     module AttributeBuilders # :nodoc:
       class ColorField < TextField # :nodoc:
-        def build_attributes
+        def html_attributes
           options = @options.stringify_keys
           options["value"] ||= validate_color_string(value)
           @options = options
