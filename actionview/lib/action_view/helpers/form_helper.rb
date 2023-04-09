@@ -1198,7 +1198,7 @@ module ActionView
         html_attributes = attribute_builder.html_attributes
 
 
-        tag("input", html_attributes)
+        Tags::PasswordField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a hidden input tag tailored for accessing a specified attribute (identified by +method+) on an object
@@ -1219,7 +1219,7 @@ module ActionView
         attribute_builder = AttributeBuilders::HiddenField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::HiddenField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a file upload input tag tailored for accessing a specified attribute (identified by +method+) on an object
@@ -1395,7 +1395,7 @@ module ActionView
         attribute_builder = AttributeBuilders::ColorField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::ColorField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns an input of type "search" for accessing a specified attribute (identified by +method+) on an object
@@ -1421,7 +1421,7 @@ module ActionView
         attribute_builder = AttributeBuilders::SearchField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::SearchField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "tel".
@@ -1433,7 +1433,7 @@ module ActionView
         attribute_builder = AttributeBuilders::TelField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::TelField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
       # aliases telephone_field
       alias phone_field telephone_field
@@ -1468,7 +1468,7 @@ module ActionView
         attribute_builder = AttributeBuilders::DateField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::DateField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "time".
@@ -1509,7 +1509,7 @@ module ActionView
         attribute_builder = AttributeBuilders::TimeField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::TimeField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "datetime-local".
@@ -1547,7 +1547,7 @@ module ActionView
         attribute_builder = AttributeBuilders::DatetimeLocalField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::DatetimeField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       alias datetime_local_field datetime_field
@@ -1569,7 +1569,7 @@ module ActionView
         attribute_builder = AttributeBuilders::MonthField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::MonthField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "week".
@@ -1589,7 +1589,7 @@ module ActionView
         attribute_builder = AttributeBuilders::WeekField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::WeekField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "url".
@@ -1601,7 +1601,7 @@ module ActionView
         attribute_builder = AttributeBuilders::UrlField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::UrlField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a text_field of type "email".
@@ -1613,7 +1613,7 @@ module ActionView
         attribute_builder = AttributeBuilders::EmailField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::EmailField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns an input tag of type "number".
@@ -1625,7 +1625,7 @@ module ActionView
         attribute_builder = AttributeBuilders::NumberField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
 
-        tag("input", html_attributes)
+        Tags::NumberField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns an input tag of type "range".
