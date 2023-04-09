@@ -5,13 +5,13 @@ require "action_view/helpers/tags/checkable"
 module ActionView
   module Helpers
     module Tags # :nodoc:
-      class CheckBox # :nodoc:
+      class CheckBox < RendererBase # :nodoc:
         include Checkable
-        include TagHelper
 
-        def initialize(attributes:, unchecked_value:)
+        def initialize(attributes:, unchecked_value:, object:, method_name:, template_object:)
           @attributes = attributes
           @unchecked_value = unchecked_value
+          super(attributes: attributes, object: object, method_name: method_name, template_object: template_object)
         end
 
         def render

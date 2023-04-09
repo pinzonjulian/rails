@@ -1172,8 +1172,8 @@ module ActionView
       def text_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::TextField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
-        tag("input", html_attributes)
+
+        Tags::TextField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns an input tag of the "password" type tailored for accessing a specified attribute (identified by +method+) on an object
@@ -1196,7 +1196,7 @@ module ActionView
       def password_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::PasswordField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
 
         tag("input", html_attributes)
       end
@@ -1218,7 +1218,7 @@ module ActionView
       def hidden_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::HiddenField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1256,7 +1256,7 @@ module ActionView
 
         attribute_builder = AttributeBuilders::FileField.new(object_name, method, self, convert_direct_upload_option_to_url(options.dup))
         html_attributes = attribute_builder.html_attributes
-        
+
         Tags::FileField.new(attributes: html_attributes).render
       end
 
@@ -1355,8 +1355,14 @@ module ActionView
       def check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0")
         attribute_builder = AttributeBuilders::CheckBox.new(object_name, method, self, checked_value, options)
         html_attributes = attribute_builder.html_attributes
-        
-        Tags::CheckBox.new(attributes: html_attributes, unchecked_value: unchecked_value).render
+
+        Tags::CheckBox.new(
+          attributes: html_attributes, 
+          unchecked_value: unchecked_value,
+          object: attribute_builder.object, 
+          method_name: method, 
+          template_object: self
+        ).render
       end
 
       # Returns a radio button tag for accessing a specified attribute (identified by +method+) on an object
@@ -1388,7 +1394,7 @@ module ActionView
       def color_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::ColorField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1414,7 +1420,7 @@ module ActionView
       def search_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::SearchField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1426,7 +1432,7 @@ module ActionView
       def telephone_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::TelField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
       # aliases telephone_field
@@ -1461,7 +1467,7 @@ module ActionView
       def date_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::DateField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1502,7 +1508,7 @@ module ActionView
       def time_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::TimeField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1540,7 +1546,7 @@ module ActionView
       def datetime_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::DatetimeLocalField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1562,7 +1568,7 @@ module ActionView
       def month_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::MonthField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1582,7 +1588,7 @@ module ActionView
       def week_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::WeekField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1594,7 +1600,7 @@ module ActionView
       def url_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::UrlField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1606,7 +1612,7 @@ module ActionView
       def email_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::EmailField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 
@@ -1618,7 +1624,7 @@ module ActionView
       def number_field(object_name, method, options = {})
         attribute_builder = AttributeBuilders::NumberField.new(object_name, method, self, options)
         html_attributes = attribute_builder.html_attributes
-        
+
         tag("input", html_attributes)
       end
 

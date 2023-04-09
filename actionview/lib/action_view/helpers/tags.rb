@@ -9,6 +9,8 @@ module ActionView
 
       eager_autoload do
         autoload :Base
+        autoload :RendererBase
+
         autoload :Translator
         autoload :CheckBox
         autoload :CollectionCheckBoxes
@@ -27,6 +29,8 @@ module ActionView
         autoload :TimeSelect
         autoload :TimeZoneSelect
         autoload :WeekdaySelect
+
+        autoload :TextField
       end
     end
   end
