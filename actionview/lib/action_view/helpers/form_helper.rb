@@ -1634,7 +1634,10 @@ module ActionView
       #
       # Supports the same options as FormTagHelper#range_field_tag.
       def range_field(object_name, method, options = {})
-        Tags::RangeField.new(object_name, method, self, options).render
+        attribute_builder = AttributeBuilders::RangeField.new(object_name, method, self, options)
+        html_attributes = attribute_builder.html_attributes
+
+        Tags::RangeField.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       def _object_for_form_builder(object) # :nodoc:

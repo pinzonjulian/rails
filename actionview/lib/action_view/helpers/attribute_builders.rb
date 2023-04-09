@@ -22,6 +22,7 @@ module ActionView
         autoload :TextField
         autoload :TimeField
         autoload :PasswordField
+        autoload :RangeField
         autoload :UrlField
         autoload :WeekField
       end

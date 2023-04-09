@@ -2,8 +2,8 @@
 
 module ActionView
   module Helpers
-    module Tags # :nodoc:
-      class NumberField < TextField # :nodoc:
+    module AttributeBuilders # :nodoc:
+      class RangeField < NumberField # :nodoc:
       end
     end
   end
