@@ -1285,7 +1285,10 @@ module ActionView
       #   #      #{@entry.body}
       #   #    </textarea>
       def text_area(object_name, method, options = {})
-        Tags::TextArea.new(object_name, method, self, options).render
+        attribute_builder = AttributeBuilders::TextArea.new(object_name, method, self, options)
+        html_attributes = attribute_builder.html_attributes
+
+        Tags::TextArea.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
       end
 
       # Returns a checkbox tag tailored for accessing a specified attribute (identified by +method+) on an object

@@ -19,6 +19,7 @@ module ActionView
         autoload :NumberField
         autoload :SearchField
         autoload :TelField
+        autoload :TextArea
         autoload :TextField
         autoload :TimeField
         autoload :PasswordField
