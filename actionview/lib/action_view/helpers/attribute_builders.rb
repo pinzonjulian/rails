@@ -17,6 +17,7 @@ module ActionView
         autoload :HiddenField
         autoload :MonthField
         autoload :NumberField
+        autoload :RadioButton
         autoload :SearchField
         autoload :TelField
         autoload :TextArea

@@ -1387,7 +1387,10 @@ module ActionView
       #   # => <input type="radio" id="user_receive_newsletter_yes" name="user[receive_newsletter]" value="yes" />
       #   #    <input type="radio" id="user_receive_newsletter_no" name="user[receive_newsletter]" value="no" checked="checked" />
       def radio_button(object_name, method, tag_value, options = {})
-        Tags::RadioButton.new(object_name, method, self, tag_value, options).render
+        attribute_builder = AttributeBuilders::RadioButton.new(object_name, method, self, tag_value, options)
+        html_attributes = attribute_builder.html_attributes
+        Tags::RadioButton.new(attributes: html_attributes, object: attribute_builder.object, method_name: method, template_object: self).render
+
       end
 
       # Returns a text_field of type "color".
