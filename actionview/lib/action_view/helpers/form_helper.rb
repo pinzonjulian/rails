@@ -1146,7 +1146,12 @@ module ActionView
       #   end
       #   # => <label for="post_terms">Accept <a href="/terms">Terms</a>.</label>
       def label(object_name, method, content_or_options = nil, options = nil, &block)
-        Tags::Label.new(object_name, method, self, content_or_options, options).render(&block)
+        attribute_builder = AttributeBuilders::Label.new(object_name, method, self,content_or_options, options)
+        html_attributes = attribute_builder.html_attributes
+        content = attribute_builder.content
+
+        html_element = Tags::Label.new(object_name, method, self, content, html_attributes, object: attribute_builder.object)
+        html_element.render(&block)
       end
 
       # Returns an input tag of the "text" type tailored for accessing a specified attribute (identified by +method+) on an object

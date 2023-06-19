@@ -15,6 +15,7 @@ module ActionView
         autoload :EmailField
         autoload :FileField
         autoload :HiddenField
+        autoload :Label
         autoload :MonthField
         autoload :NumberField
         autoload :RadioButton

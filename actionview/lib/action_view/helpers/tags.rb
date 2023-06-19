@@ -26,6 +26,7 @@ module ActionView
         autoload :GroupedCollectionSelect
         autoload :HiddenField
         autoload :Label
+        autoload :OldLabel
         autoload :MonthField
         autoload :NumberField
         autoload :PasswordField
