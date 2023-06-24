@@ -4,6 +4,8 @@ module ActionView
   module Helpers
     module Tags # :nodoc:
       class Label < Base # :nodoc:
+        include Helpers::FormTagHelper
+
         class LabelBuilder # :nodoc:
           attr_reader :object
 
