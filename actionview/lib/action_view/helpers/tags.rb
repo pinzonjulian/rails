@@ -9,6 +9,7 @@ module ActionView
 
       eager_autoload do
         autoload :Base
+        autoload :SelectBase
         autoload :RendererBase
 
         autoload :Translator
