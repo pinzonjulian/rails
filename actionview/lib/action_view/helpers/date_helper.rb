@@ -288,7 +288,7 @@ module ActionView
       # Note: If the day is not included as an option but the month is, the day will be set to the 1st to ensure that
       # all month choices are valid.
       def date_select(object_name, method, options = {}, html_options = {})
-        Tags::DateSelect.new(object_name, method, self, options, html_options).render
+        Tags::SelectElements::DateSelect.new(object_name, method, self, options, html_options).render
       end
 
       # Returns a set of select tags (one for hour, minute, and optionally second) pre-selected for accessing a
@@ -325,7 +325,7 @@ module ActionView
       # Note: If the day is not included as an option but the month is, the day will be set to the 1st to ensure that
       # all month choices are valid.
       def time_select(object_name, method, options = {}, html_options = {})
-        Tags::TimeSelect.new(object_name, method, self, options, html_options).render
+        Tags::SelectElements::TimeSelect.new(object_name, method, self, options, html_options).render
       end
 
       # Returns a set of select tags (one for year, month, day, hour, and minute) pre-selected for accessing a
@@ -360,7 +360,7 @@ module ActionView
       #
       # The selects are prepared for multi-parameter assignment to an Active Record object.
       def datetime_select(object_name, method, options = {}, html_options = {})
-        Tags::DatetimeSelect.new(object_name, method, self, options, html_options).render
+        Tags::SelectElements::DatetimeSelect.new(object_name, method, self, options, html_options).render
       end
 
       # Returns a set of HTML select-tags (one for year, month, day, hour, minute, and second) pre-selected with the

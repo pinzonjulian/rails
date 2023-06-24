@@ -157,7 +157,7 @@ module ActionView
       # In case if you don't want the helper to generate this hidden field you can specify
       # <tt>include_hidden: false</tt> option.
       def select(object, method, choices = nil, options = {}, html_options = {}, &block)
-        Tags::Select.new(object, method, self, choices, options, html_options, &block).render
+        Tags::SelectElements::Select.new(object, method, self, choices, options, html_options, &block).render
       end
 
       # Returns <tt><select></tt> and <tt><option></tt> tags for the collection of existing return values of
@@ -197,7 +197,7 @@ module ActionView
       #     <option value="3">M. Clark</option>
       #   </select>
       def collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})
-        Tags::CollectionSelect.new(object, method, self, collection, value_method, text_method, options, html_options).render
+        Tags::SelectElements::Collection::CollectionSelect.new(object, method, self, collection, value_method, text_method, options, html_options).render
       end
 
       # Returns <tt><select></tt>, <tt><optgroup></tt> and <tt><option></tt> tags for the collection of existing return values of
@@ -256,7 +256,7 @@ module ActionView
       #     </optgroup>
       #   </select>
       def grouped_collection_select(object, method, collection, group_method, group_label_method, option_key_method, option_value_method, options = {}, html_options = {})
-        Tags::GroupedCollectionSelect.new(object, method, self, collection, group_method, group_label_method, option_key_method, option_value_method, options, html_options).render
+        Tags::SelectElements::Collection::GroupedCollectionSelect.new(object, method, self, collection, group_method, group_label_method, option_key_method, option_value_method, options, html_options).render
       end
 
       # Returns select and option tags for the given object and method, using
@@ -290,13 +290,13 @@ module ActionView
       #
       #   time_zone_select(:user, :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone)
       def time_zone_select(object, method, priority_zones = nil, options = {}, html_options = {})
-        Tags::TimeZoneSelect.new(object, method, self, priority_zones, options, html_options).render
+        Tags::SelectElements::TimeZoneSelect.new(object, method, self, priority_zones, options, html_options).render
       end
 
       # Returns select and option tags for the given object and method, using
       # <tt>weekday_options_for_select</tt> to generate the list of option tags.
       def weekday_select(object, method, options = {}, html_options = {}, &block)
-        Tags::WeekdaySelect.new(object, method, self, options, html_options, &block).render
+        Tags::SelectElements::WeekdaySelect.new(object, method, self, options, html_options, &block).render
       end
 
       # Accepts a container (hash, array, enumerable, your type) and returns a string of option tags. Given a container
@@ -696,7 +696,7 @@ module ActionView
       # In case if you don't want the helper to generate this hidden field you can specify
       # <tt>include_hidden: false</tt> option.
       def collection_radio_buttons(object, method, collection, value_method, text_method, options = {}, html_options = {}, &block)
-        Tags::CollectionRadioButtons.new(object, method, self, collection, value_method, text_method, options, html_options).render(&block)
+        Tags::InputElements::Collection::CollectionRadioButtons.new(object, method, self, collection, value_method, text_method, options, html_options).render(&block)
       end
 
       # Returns check box tags for the collection of existing return values of
@@ -780,7 +780,7 @@ module ActionView
       # In the rare case you don't want this hidden field, you can pass the
       # <tt>include_hidden: false</tt> option to the helper method.
       def collection_check_boxes(object, method, collection, value_method, text_method, options = {}, html_options = {}, &block)
-        Tags::CollectionCheckBoxes.new(object, method, self, collection, value_method, text_method, options, html_options).render(&block)
+        Tags::InputElements::Collection::CollectionCheckBoxes.new(object, method, self, collection, value_method, text_method, options, html_options).render(&block)
       end
 
       private
