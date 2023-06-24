@@ -1,10 +1,13 @@
 # frozen_string_literal: true
+require "action_view/helpers/tags/select_elements/renderable"
 
 module ActionView
   module Helpers
     module Tags # :nodoc:
       module SelectElements # :nodoc:
         class WeekdaySelect < Base # :nodoc:
+          include Renderable
+
           def initialize(object_name, method_name, template_object, options, html_options)
             @html_options = html_options
 

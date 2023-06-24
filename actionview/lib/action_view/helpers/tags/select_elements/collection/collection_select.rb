@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+require "action_view/helpers/tags/select_elements/renderable"
+
 module ActionView
   module Helpers
     module Tags # :nodoc:
       module SelectElements # :nodoc:
         module Collection # :nodoc:
           class CollectionSelect < Base # :nodoc:
+            include Renderable
+
             def initialize(object_name, method_name, template_object, collection, value_method, text_method, options, html_options)
               @collection = collection
               @value_method = value_method
