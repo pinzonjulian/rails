@@ -20,6 +20,7 @@ module ActionView
         autoload :NumberField
         autoload :RadioButton
         autoload :SearchField
+        autoload :Select
         autoload :TelField
         autoload :TextArea
         autoload :TextField

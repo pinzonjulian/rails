@@ -157,7 +157,18 @@ module ActionView
       # In case if you don't want the helper to generate this hidden field you can specify
       # <tt>include_hidden: false</tt> option.
       def select(object, method, choices = nil, options = {}, html_options = {}, &block)
-        Tags::Select.new(object, method, self, choices, options, html_options, &block).render
+        attribute_builder = AttributeBuilders::Select.new(object, method, self, options, html_options)
+
+        html_element = Tags::Select.new(
+          attributes: attribute_builder.html_attributes,
+          object: attribute_builder.object,
+          method_name: method,
+          template_object: self,
+          choices: choices,
+          options: attribute_builder.options,
+          &block
+        )
+        html_element.render
       end
 
       # Returns <tt><select></tt> and <tt><option></tt> tags for the collection of existing return values of

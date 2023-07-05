@@ -6,19 +6,7 @@ module ActionView
       module SelectRenderer # :nodoc:
         private
           def select_content_tag(option_tags, options, html_options)
-            html_options = html_options.stringify_keys
-            [:required, :multiple, :size].each do |prop|
-              html_options[prop.to_s] = options.delete(prop) if options.key?(prop) && !html_options.key?(prop.to_s)
-            end
-
-            add_default_name_and_id(html_options)
-
-            if placeholder_required?(html_options)
-              raise ArgumentError, "include_blank cannot be false for a required field." if options[:include_blank] == false
-              options[:include_blank] ||= true unless options[:prompt]
-            end
-
-            value = options.fetch(:selected) { value() }
+            value = html_options.delete("value")
             select = content_tag("select", add_options(option_tags, options, value), html_options)
 
             if html_options["multiple"] && options.fetch(:include_hidden, true)
@@ -28,10 +16,6 @@ module ActionView
             end
           end
 
-          def placeholder_required?(html_options)
-            # See https://html.spec.whatwg.org/multipage/forms.html#attr-select-required
-            html_options["required"] && !html_options["multiple"] && html_options.fetch("size", 1).to_i == 1
-          end
 
           def add_options(option_tags, options, value = nil)
             if options[:include_blank]
