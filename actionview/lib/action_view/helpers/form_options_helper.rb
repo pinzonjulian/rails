@@ -208,7 +208,19 @@ module ActionView
       #     <option value="3">M. Clark</option>
       #   </select>
       def collection_select(object, method, collection, value_method, text_method, options = {}, html_options = {})
-        Tags::CollectionSelect.new(object, method, self, collection, value_method, text_method, options, html_options).render
+        attribute_builder = AttributeBuilders::Select.new(object, method, self, options, html_options)
+
+        html_element = Tags::CollectionSelect.new(
+          attributes: attribute_builder.html_attributes,
+          object: attribute_builder.object,
+          method_name: method,
+          template_object: self,
+          collection: collection,
+          value_method: value_method,
+          text_method: text_method,
+          options: attribute_builder.options,
+        )
+        html_element.render
       end
 
       # Returns <tt><select></tt>, <tt><optgroup></tt> and <tt><option></tt> tags for the collection of existing return values of

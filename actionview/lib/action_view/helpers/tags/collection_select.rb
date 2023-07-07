@@ -3,22 +3,23 @@
 module ActionView
   module Helpers
     module Tags # :nodoc:
-      class CollectionSelect < Base # :nodoc:
+      class CollectionSelect < RendererBase # :nodoc:
         include SelectRenderer
         include FormOptionsHelper
 
-        def initialize(object_name, method_name, template_object, collection, value_method, text_method, options, html_options)
+        def initialize(attributes:, object:, method_name:, template_object:, collection:, value_method:, text_method:, options:)
           @collection   = collection
           @value_method = value_method
           @text_method  = text_method
-          @html_options = html_options
+          @html_options = attributes
+          @options = options
 
-          super(object_name, method_name, template_object, options)
+          super(attributes: attributes, object: object, method_name: method_name, template_object: template_object)
         end
 
         def render
           option_tags_options = {
-            selected: @options.fetch(:selected) { value },
+            selected: @options.fetch(:selected) { @html_options["value"] },
             disabled: @options[:disabled]
           }
 
