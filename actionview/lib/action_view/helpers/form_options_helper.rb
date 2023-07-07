@@ -301,7 +301,17 @@ module ActionView
       #
       #   time_zone_select(:user, :time_zone, ActiveSupport::TimeZone.all.sort, model: ActiveSupport::TimeZone)
       def time_zone_select(object, method, priority_zones = nil, options = {}, html_options = {})
-        Tags::TimeZoneSelect.new(object, method, self, priority_zones, options, html_options).render
+        attribute_builder = AttributeBuilders::Select.new(object, method, self, options, html_options)
+
+        html_element = Tags::TimeZoneSelect.new(
+          attributes: attribute_builder.html_attributes,
+          object: attribute_builder.object,
+          method_name: method,
+          template_object: self,
+          priority_zones: priority_zones,
+          options: attribute_builder.options,
+        )
+        html_element.render
       end
 
       # Returns select and option tags for the given object and method, using
