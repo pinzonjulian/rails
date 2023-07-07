@@ -279,7 +279,22 @@ module ActionView
       #     </optgroup>
       #   </select>
       def grouped_collection_select(object, method, collection, group_method, group_label_method, option_key_method, option_value_method, options = {}, html_options = {})
-        Tags::GroupedCollectionSelect.new(object, method, self, collection, group_method, group_label_method, option_key_method, option_value_method, options, html_options).render
+        attribute_builder = AttributeBuilders::Select.new(object, method, self, options, html_options)
+
+        html_element = Tags::GroupedCollectionSelect.new(
+          attributes: attribute_builder.html_attributes,
+          object: attribute_builder.object,
+          method_name: method,
+          template_object: self,
+          collection: collection,
+          group_method: group_method,
+          group_label_method: group_label_method,
+          option_key_method: option_key_method,
+          option_value_method: option_value_method,
+          options: attribute_builder.options,
+        )
+
+        html_element.render
       end
 
       # Returns select and option tags for the given object and method, using
