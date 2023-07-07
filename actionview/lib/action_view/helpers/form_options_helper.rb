@@ -317,7 +317,16 @@ module ActionView
       # Returns select and option tags for the given object and method, using
       # <tt>weekday_options_for_select</tt> to generate the list of option tags.
       def weekday_select(object, method, options = {}, html_options = {}, &block)
-        Tags::WeekdaySelect.new(object, method, self, options, html_options, &block).render
+        attribute_builder = AttributeBuilders::Select.new(object, method, self, options, html_options)
+
+        html_element = Tags::WeekdaySelect.new(
+          attributes: attribute_builder.html_attributes,
+          object: attribute_builder.object,
+          method_name: method,
+          template_object: self,
+          options: attribute_builder.options,
+          )
+        html_element.render
       end
 
       # Accepts a container (hash, array, enumerable, your type) and returns a string of option tags. Given a container
