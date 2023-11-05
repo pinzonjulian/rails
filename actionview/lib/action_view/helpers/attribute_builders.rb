@@ -7,6 +7,7 @@ module ActionView
 
       eager_autoload do
         autoload :Base
+        autoload :Button
         autoload :CheckBox
         autoload :ColorField
         autoload :DateField
@@ -27,6 +28,7 @@ module ActionView
         autoload :TimeField
         autoload :PasswordField
         autoload :RangeField
+        autoload :Submit
         autoload :UrlField
         autoload :WeekField
       end

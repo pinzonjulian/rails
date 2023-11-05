@@ -2647,9 +2647,9 @@ module ActionView
       #           create: "Add %{model}"
       #
       def submit(value = nil, options = {})
-        value, options = nil, value if value.is_a?(Hash)
-        value ||= submit_default_value
-        @template.submit_tag(value, options)
+        attribute_builder = AttributeBuilders::Submit.new(value, options, @object, @object_name)
+
+        @template.submit_tag(attribute_builder.value, attribute_builder.html_attributes)
       end
 
       # Add the submit button for the given form. When no value is given, it checks
@@ -2708,24 +2708,14 @@ module ActionView
       #   #     </button>
       #
       def button(value = nil, options = {}, &block)
-        case value
-        when Hash
-          value, options = nil, value
-        when Symbol
-          value, options = nil, { name: field_name(value), id: field_id(value) }.merge!(options.to_h)
-        end
-        value ||= submit_default_value
+        attribute_builder = AttributeBuilders::Button.new(value, options, @object, @object_name, self)
 
+        value = attribute_builder.value
         if block_given?
           value = @template.capture { yield(value) }
         end
 
-        formmethod = options[:formmethod]
-        if formmethod.present? && !/post|get/i.match?(formmethod) && !options.key?(:name) && !options.key?(:value)
-          options.merge! formmethod: :post, name: "_method", value: formmethod
-        end
-
-        @template.button_tag(value, options)
+        @template.button_tag(value, attribute_builder.html_attributes)
       end
 
       def emitted_hidden_id? # :nodoc:
@@ -2737,29 +2727,6 @@ module ActionView
           result = @default_options.merge(options)
           result[:object] = @object
           result
-        end
-
-        def submit_default_value
-          object = convert_to_model(@object)
-          key    = object ? (object.persisted? ? :update : :create) : :submit
-
-          model = if object.respond_to?(:model_name)
-            object.model_name.human
-          else
-            @object_name.to_s.humanize
-          end
-
-          defaults = []
-          # Object is a model and it is not overwritten by as and scope option.
-          if object.respond_to?(:model_name) && object_name.to_s == model.downcase
-            defaults << :"helpers.submit.#{object.model_name.i18n_key}.#{key}"
-          else
-            defaults << :"helpers.submit.#{object_name}.#{key}"
-          end
-          defaults << :"helpers.submit.#{key}"
-          defaults << "#{key.to_s.humanize} #{model}"
-
-          I18n.t(defaults.shift, model: model, default: defaults)
         end
 
         def nested_attributes_association?(association_name)
